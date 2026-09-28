@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-white text-black antialiased overflow-x-hidden;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    cursor: default;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f5f4f0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+  }
+}
+
+@layer components {
+  /* Custom cursor */
+  .cursor-dot {
+    @apply fixed top-0 left-0 w-2 h-2 bg-black rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2;
+    transition: transform 0.1s ease;
+  }
+
+  .cursor-ring {
+    @apply fixed top-0 left-0 w-8 h-8 border border-black/40 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2;
+    transition: all 0.15s ease;
+  }
+
+  /* Grid layout */
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0;
+  }
+
+  /* Section transitions */
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Horizontal rule */
+  .rule {
+    @apply w-full h-px bg-black/10;
+  }
+
+  /* Reusable button styles - mature, modern B2B */
+  .btn-text {
+    @apply relative inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider border-b border-current pb-1;
+    transition: gap 0.25s ease, opacity 0.2s ease;
+  }
+
+  .btn-text:hover {
+    gap: 0.85rem;
+    opacity: 0.85;
+  }
+
+  /* Side quick-access tab */
+  .orange-tab {
+    @apply fixed right-0 top-1/2 -translate-y-1/2 bg-[#f4642e] text-white z-50;
+    writing-mode: vertical-rl;
+    transform-origin: center center;
+  }
+
+  /* Standardized Typography Classes */
+  .heading-display {
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    @apply text-display font-semibold tracking-tight leading-[1.06];
+  }
+
+  .heading-1 {
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    @apply text-h1 font-semibold tracking-tight leading-[1.12];
+  }
+
+  .heading-2 {
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    @apply text-h2 font-semibold tracking-tight leading-[1.18];
+  }
+
+  .heading-3 {
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    @apply text-h3 font-medium tracking-tight leading-[1.28];
+  }
+
+  .label-eyebrow {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    @apply text-xs font-bold uppercase tracking-wider text-rs-orange;
+  }
+
+  .text-body-lead {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    @apply text-body-lg text-rs-gray leading-relaxed font-normal;
+  }
+
+  .text-body-regular {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    @apply text-base text-black/80 leading-relaxed font-normal;
+  }
+}
